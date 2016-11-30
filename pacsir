@@ -1,0 +1,13 @@
+# shell script to take input and search
+# official Arch repos before searching
+# the AUR
+
+repoSearch()
+{
+    echo Searching for: $@
+
+    pacman -Qs $@
+    cower -s $@
+}
+
+repoSearch $@
