@@ -1,13 +1,29 @@
 #!/usr/bin/env python
 
-def getAssignmGrade(assignmGrade, assignmWeight, assignmNum):
-    # ---- for loop to take percentages achieved for
+def divideByOneHundred(weight):
+    return weight / 100
+
+# ---- function that gets assignment grades and weighting
+# for the number of assignments given
+def getAssignmInfo(assignmNum):
+
+    assignmGrade = []
+    assignmWeight = []
+
+    # --- for loop to take percentages achieved for
     # each assignment
     for count in range(0, assignmNum):
-        assignmGrade.append(input("enter the grade as a percent for assignment "
-                + str(count) + ": "))
-        assignmWeight.append(input("enter the weighting for the above"
-                + "assignment: "))
+        grade = input("enter the grade as a percent for assignment "
+            + str(count+1) + ": ")
+
+        assignmGrade.append(int(grade))
+
+        weight = input("enter the weighting for the above assignment: ")
+        assignmWeight.append(int(weight))
+
+    for count in range(0, assignmNum):
+        assignmWeight[count] = divideByOneHundred(assignmWeight[count])
+        print(assignmWeight[count])
     return
 
 # ---- function to ask user for the number of assignments they have
@@ -18,14 +34,8 @@ def getAssignmNum():
     assignmNumInput = input("enter the number of assignments completed: ")
     assignmNum = int(assignmNumInput)
 
-    assignmGrade = [assignmNum]
-    assignmWeight = [assignmNum]
-
-    getAssignmGrade(assignmGrade, assignmWeight, assignmNum)
+    getAssignmInfo(assignmNum)
     return
-
-def divideByOneHundred(weight):
-    return grade / 100
 
 # start the program
 getAssignmNum()
